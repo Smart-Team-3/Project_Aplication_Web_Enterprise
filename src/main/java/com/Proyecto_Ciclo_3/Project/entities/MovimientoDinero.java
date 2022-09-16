@@ -1,6 +1,8 @@
 package com.Proyecto_Ciclo_3.Project.entities;
 
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,7 +13,6 @@ public class MovimientoDinero {
     private int id;
     private long monto;
     private String concepto;
-
     @ManyToOne
     @JoinColumn(name = "empleado_id")
     private Empleado usuario;
@@ -19,10 +20,10 @@ public class MovimientoDinero {
     public MovimientoDinero() {
     }
 
-    public MovimientoDinero(long monto, String concepto, Empleado empleado) {
+    public MovimientoDinero(long monto, String concepto, Empleado usuario) {
         this.monto = monto;
         this.concepto = concepto;
-        this.usuario = empleado;
+        this.usuario = usuario;
     }
 
     public int getId() {
@@ -56,7 +57,6 @@ public class MovimientoDinero {
     public void setUsuario(Empleado usuario) {
         this.usuario = usuario;
     }
-
 
 }
 

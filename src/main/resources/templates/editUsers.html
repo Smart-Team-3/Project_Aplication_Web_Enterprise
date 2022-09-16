@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Editar Empleado - Ciclo3</title>
+  <title>Editar Empleado </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
   <h1> Actualice aqui los datos del Empleado</h1>
   <br>
 
-  <form th:action="@{/ActualizarEmpleado}" th:object="${empl}" method="post">
+  <form th:action="@{/updateuser}" th:object="${user}" method="post">
 
     <div class="row">
       <div class="form-group col-md-12">
@@ -54,7 +54,7 @@
         <label class="col-md-3" for="empresa">Empresa a la que pertence:</label>
         <div class="col-md-6">
           <select th:field="*{empresa}" class="form-control" id="empresa" required="required">
-            <option th:each="empresa : ${emprelist}" th:text="${empresa.nombre}" th:value="${empresa.id}"></option>
+            <option th:each="empresa : ${enterpriseList}" th:text="${empresa.nombre}" th:value="${empresa.id}"></option>
           </select>
         </div>
       </div>
@@ -65,8 +65,8 @@
         <label class="col-md-3" for="rol">Rol del empleado:</label>
         <div class="col-md-6">
           <select th:field="*{rol}" class="form-control" id="rol" required="required">
-            <option th:value=1>Administrativo</option>
-            <option th:value=2>Operativo</option>
+            <option th:value=1>administrativo</option>
+            <option th:value=2>operativo</option>
           </select>
         </div>
       </div>

@@ -5,18 +5,21 @@ package com.Proyecto_Ciclo_3.Project.controllers;
 import com.Proyecto_Ciclo_3.Project.entities.Empresa;
 import com.Proyecto_Ciclo_3.Project.services.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class EnterpriseController {
     @Autowired
     EnterpriseService enterpriseService;
 
     @GetMapping("/enterprises")
-    public List<Empresa> verEmpresas() {
+    public List<Empresa> ViewEnterprises() {
         return enterpriseService.GetAllEnterprises();
     }
 

@@ -11,12 +11,10 @@ public class Empleado {
     private int id;//key
     private String nombre;
     private String correo;
-    @ManyToOne//asociación empleado a empresa
+    @ManyToOne()
     @JoinColumn(name="empresa_id")//enlaza
     private Empresa empresa;//llamo a Empresa debo asociar
     private String rol;
-
-
 
     //contructor vacio
     public Empleado() {

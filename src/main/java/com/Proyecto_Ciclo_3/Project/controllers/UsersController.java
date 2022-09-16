@@ -2,60 +2,83 @@ package com.Proyecto_Ciclo_3.Project.controllers;
 
 
 import com.Proyecto_Ciclo_3.Project.entities.Empleado;
+import com.Proyecto_Ciclo_3.Project.entities.Empresa;
+import com.Proyecto_Ciclo_3.Project.services.EnterpriseService;
 import com.Proyecto_Ciclo_3.Project.services.UsersService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Optional;
 
-@RestController
+
+@Controller
 public class UsersController {
     @Autowired
     UsersService usersService;
-    /////
-    //RestController para la entidad Empleado;
-    /////
-    @GetMapping("/users")
-    public List<Empleado> viewUsers(){
+    @Autowired
+    EnterpriseService enterpriseService;
 
-        return usersService.getAllUsers();
+    @GetMapping("/viewusers")
+    public String viewUsers(Model model, @ModelAttribute("message") String message){
+        List<Empleado> usersList = usersService.getAllUsers();
+        model.addAttribute("userList",usersList);
+        model.addAttribute("message",message);
+        return "viewUsers";
     }
-    @PostMapping("/users")
-    public Optional<Optional<Empleado>> SaveUser(@RequestBody Empleado user){
-
-        return Optional.ofNullable(this.usersService.saveOrUpdate(user));
+    @GetMapping ("/adduser")
+    public String newUser(Model model, @ModelAttribute("message") String message){
+        Empleado user = new Empleado();
+        model.addAttribute("user",user);
+        model.addAttribute("message",message);
+        List<Empresa> EnterpriseList = enterpriseService.GetAllEnterprises();
+        return "addUser";
     }
-    @GetMapping(path = "/users/{id}")
-    public Optional<Empleado> findUserById(@PathVariable("id") Integer id){
-        return this.usersService.getUserById(id);
-    }
-    @GetMapping("/enterprises/{id}/users")
-    public ArrayList<Empleado> FinduserByEnterprise(@PathVariable("id") Integer id){
-        return this.usersService.getUsersByEnterprise(id);
-    }
-    @PatchMapping("/users/{id}")
-    public Optional<Empleado> UpdateUsers(@PathVariable("id") Integer id, @RequestBody Empleado empleado) {
-        Optional<Empleado> user = usersService.getUserById(id);
-        if(user.isPresent()){
-            Empleado users = user.get();
-            users.setNombre(empleado.getNombre());
-            users.setCorreo(empleado.getCorreo());
-            users.setEmpresa(empleado.getEmpresa());
-            users.setRol(empleado.getRol());
-            return usersService.saveOrUpdate(users);
+    @PostMapping("/saveuser")
+    public String SaveUser(Empleado user, RedirectAttributes redirectAttributes){
+        if(usersService.saveOrUpdateUser(user)){
+            redirectAttributes.addAttribute("message","it was saved");
+            return "redirect:/viewusers";
         }
-
-        return user;
+        redirectAttributes.addFlashAttribute("message","error, not save");
+        return "redirect:/adduser";
     }
-    @DeleteMapping("/users/{id}") //Metodo para eliminar empleados por id
-    public String DeleteUser(@PathVariable("id") Integer id) {
-        boolean Response = usersService.DeleteUser(id); //eliminamos usando el servicio de nuestro service
-        if (Response) {
-            return "Se elimino correctamente el empleado con id " + id;
+    @GetMapping("/edituser/{id}")
+    public String EditUser(Model model, @PathVariable Integer id,@ModelAttribute("message") String message){
+        Empleado user = usersService.getUserById(id).get();
+        model.addAttribute("user",user);
+        model.addAttribute("message",message);
+        return "editUsers";
+    }
+    @PostMapping("/updateuser")
+    public String UpdateUser(@ModelAttribute("user") Empleado user,RedirectAttributes redirectAttributes){
+        if(usersService.saveOrUpdateUser(user)){
+            redirectAttributes.addFlashAttribute("message","it was updated");
+            return "redirect:/viewusers";
         }
-        return "No se  elimino correctamente el empleado con id " + id;
+        redirectAttributes.addFlashAttribute("message","it was not updated");
+        return "redirect:/adduser";
     }
+    @GetMapping("/deleteuser")
+    public String DeleteUser(@PathVariable Integer id,RedirectAttributes redirectAttributes){
+        if(usersService.DeleteUser(id)){
+            redirectAttributes.addFlashAttribute("message","it was deleted");
+            return "redirect:/viewusers";
+        }
+        redirectAttributes.addFlashAttribute("message","it was not deleted");
+        return "redirect:/edituser";
+    }
+    @GetMapping("/enterprise/{id}/users")
+    public String ViewUsersByEnterprise(@PathVariable("id") Integer id,Model model){
+        List<Empleado> usersList = usersService.getUsersByEnterprise(id);
+        model.addAttribute("userList", usersList);
+        return "viewUsers";
+    }
+
 }

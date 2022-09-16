@@ -18,7 +18,7 @@ public class UsersService {
 
     public List<Empleado> getAllUsers(){
         List<Empleado> usersList = new ArrayList<>();
-        usersRepository.findAll().forEach(empleado -> usersList.add(empleado));
+        usersRepository.findAll().forEach(user -> usersList.add(user));
         return usersList;
 
     }
@@ -29,9 +29,12 @@ public class UsersService {
 
         return usersRepository.findByEnterprise(id);
     }
-    public Optional<Empleado> saveOrUpdate(Empleado user) {
-
-        return Optional.ofNullable(this.usersRepository.save(user));
+    public Boolean saveOrUpdateUser(Empleado user) {
+        Empleado User =  usersRepository.save(user);
+        if(usersRepository.findById(user.getId())!= null){
+            return true;
+        }
+        return false;
     }
 
     public boolean DeleteUser(Integer id){
