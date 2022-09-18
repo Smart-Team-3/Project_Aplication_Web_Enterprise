@@ -26,7 +26,7 @@ public class EnterpriseService {
         return enterpriseRepository.findById(id);
     }
     //metodo para definir o actulizar el nombre de la empresa
-    public boolean SelectOrChangeEnterpriseName(Empresa empresa){
+    public boolean UpdateOrChangeEnterprise(Empresa empresa){
         Empresa emp = enterpriseRepository.save(empresa);
         return enterpriseRepository.findById(emp.getId()).isPresent();
     }

@@ -8,51 +8,64 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class EnterpriseController {
     @Autowired
     EnterpriseService enterpriseService;
 
-    @GetMapping("/enterprises")
-    public List<Empresa> ViewEnterprises() {
-        return enterpriseService.GetAllEnterprises();
+    @GetMapping("/viewenterprises")
+    public String viewEnterprises(Model model, @ModelAttribute("message") String message){
+        List<Empresa> EnterpriseList = enterpriseService.GetAllEnterprises();
+        model.addAttribute("enterpriseList",EnterpriseList);
+        model.addAttribute("message",message);
+        return "viewEnterprises";
     }
-
-    @PostMapping("/enterprises")
-    public boolean SaveEnterprise(@RequestBody Empresa empresa) {
-        return this.enterpriseService.SelectOrChangeEnterpriseName(empresa);
+    @GetMapping ("/addenterprise")
+    public String newEnterprise(Model model, @ModelAttribute("message") String message){
+        Empresa enterprise = new Empresa();
+        model.addAttribute("enterprise",enterprise);
+        model.addAttribute("message",message);
+        return "addEnterprise";
     }
-
-    @GetMapping(path = "/enterprises/{id}")
-    public Optional<Empresa> EnterpriseById(@PathVariable("id") Integer id){
-        return this.enterpriseService.GetEnterpriseById(id);
-    }
-    @PatchMapping("/enterprises/{id}")
-    public boolean UpdateEnterprise(@PathVariable("id") Integer id, @RequestBody Empresa enterprise) {
-        Optional<Empresa> enterpr = enterpriseService.GetEnterpriseById(id);
-        if(enterpr.isPresent()) {
-            Empresa enter = enterpr.get();
-            enter.setNombre(enterprise.getNombre());
-            enter.setDireccion(enterprise.getDireccion());
-            enter.setTelefono(enterprise.getTelefono());
-            enter.setNit(enterprise.getNit());
-            return enterpriseService.SelectOrChangeEnterpriseName(enter);
+    @PostMapping("/saveenterprise")
+    public String SaveEnterprise(Empresa enterprise, RedirectAttributes redirectAttributes){
+        if(enterpriseService.UpdateOrChangeEnterprise(enterprise)){
+            redirectAttributes.addAttribute("message","it was saved");
+            return "redirect:/viewenterprises";
         }
-        return false;
+        redirectAttributes.addFlashAttribute("message","error, not save");
+        return "redirect:/addenterprise";
     }
-    @DeleteMapping(path = "enterprises/{id}")
-    public String DeleteEnterprises (@PathVariable("id") Integer id){
-        boolean response = this.enterpriseService.DeleteEnterprise(id);
-        if (response) {
-            return "Ha sido eliminada la empresa con el id" + id;
+    @GetMapping("/editenterprise/{id}")
+    public String EditEnterprise(Model model, @PathVariable Integer id,@ModelAttribute("message") String message){
+        Empresa enterprise = enterpriseService.GetEnterpriseById(id).get();
+        model.addAttribute("enterprise",enterprise);
+        model.addAttribute("message",message);
+        return "editEnterprise";
+    }
+    @PostMapping("/updateenterprise")
+    public String UpdateEnterprise(@ModelAttribute("user") Empresa enterprise,RedirectAttributes redirectAttributes){
+        if(enterpriseService.UpdateOrChangeEnterprise(enterprise)){
+            redirectAttributes.addFlashAttribute("message","it was updated");
+            return "redirect:/viewenterprises";
         }
-        return "No ha sido posible eliminar la empresa con el id" + id;
-
+        redirectAttributes.addFlashAttribute("message","it was not updated");
+        return "redirect:/addenterprise";
+    }
+    @GetMapping("/deleteenterprise")
+    public String DeleteEnterprise(@PathVariable Integer id,RedirectAttributes redirectAttributes){
+        if(enterpriseService.DeleteEnterprise(id)){
+            redirectAttributes.addFlashAttribute("message","it was deleted");
+            return "redirect:/viewenterprises";
+        }
+        redirectAttributes.addFlashAttribute("message","it was not deleted");
+        return "redirect:/editenterprise";
     }
 }
 
