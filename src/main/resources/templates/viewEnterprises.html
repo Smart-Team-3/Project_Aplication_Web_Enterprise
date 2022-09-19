@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Empresas </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <style>
+    a{
+    color:white;
+    }
+    a:hover {
+    color: #616A6B;
+    text-decoration:none;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1> Lista de Empresas</h1>
+
+        <br><table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>NIT</th>
+
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+
+            <tr th:each="empresa : ${enterpriseList}"> <!--el modelo guarda la lista de todas las empr-->
+                <td th:text="${empresa.id}"></td>
+                <td th:text="${empresa.nombre}"></td>
+                <td th:text="${empresa.direccion}"></td>
+                <td th:text="${empresa.telefono}"></td>
+                <td th:text="${empresa.nit}"></td>
+
+
+                <td><button type="button" class="btn btn-warning"><a th:href="@{/editenterprise/{id}(id=${empresa.id})}">Editar</a></button></td>
+                <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteenterprise/{id}(id=${empresa.id})}">Eliminar</a></button></td>
+            </tr>
+        </table>
+
+            <button type="button" class="btn btn-info"><a th:href="@{/addenterprise}">Agregar Nueva Empresa</a></button>
+
+    </div>
+
+
+    <script th:inline="javascript">
+        window.onload=function(){
+
+            var msg= [[${message}]];
+            if (msg == "it was saved"){
+                Command : toastr["success"]("Empresa registrada con éxito!")
+                }
+            else if (msg == "it was updated"){
+                Command : toastr["success"]("Empresa actualizada con éxito!")
+            }
+            else if (msg == "it was deleted"){
+                Command : toastr["error"]("Registro de empresa eliminada con éxito!")
+            }
+            else if (msg == "error deleting"){
+                Command : toastr["error"]("Registro de empresa no ha sido eliminada!")
+            }
+            toastr.options={
+                "positionClass": "toast-top-right",
+                "showDuration":"300",
+                "showMethod":"fadeIn",
+                "hideMethod":"fadeOut",
+            }
+        }
+    </script>
+
+</body>
+</html>

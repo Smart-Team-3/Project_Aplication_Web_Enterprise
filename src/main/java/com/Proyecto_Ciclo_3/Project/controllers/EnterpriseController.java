@@ -50,7 +50,7 @@ public class EnterpriseController {
         return "editEnterprise";
     }
     @PostMapping("/updateenterprise")
-    public String UpdateEnterprise(@ModelAttribute("user") Empresa enterprise,RedirectAttributes redirectAttributes){
+    public String UpdateEnterprise(@ModelAttribute("enterprise") Empresa enterprise,RedirectAttributes redirectAttributes){
         if(enterpriseService.UpdateOrChangeEnterprise(enterprise)){
             redirectAttributes.addFlashAttribute("message","it was updated");
             return "redirect:/viewenterprises";
@@ -58,7 +58,7 @@ public class EnterpriseController {
         redirectAttributes.addFlashAttribute("message","it was not updated");
         return "redirect:/addenterprise";
     }
-    @GetMapping("/deleteenterprise")
+    @GetMapping("/deleteenterprise/{id}")
     public String DeleteEnterprise(@PathVariable Integer id,RedirectAttributes redirectAttributes){
         if(enterpriseService.DeleteEnterprise(id)){
             redirectAttributes.addFlashAttribute("message","it was deleted");
