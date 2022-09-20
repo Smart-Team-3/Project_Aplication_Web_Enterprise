@@ -52,7 +52,7 @@
   <button type="button" class="btn btn-info"><a th:href="@{/adduser}">Agregar Nuevo Empleado</a></button>
   <br><br>
 
-  <button type="button" class="btn btn-primary"><a th:href="@{/viewuser}">Ver lista de Empresas</a></button>
+  <button type="button" class="btn btn-primary"><a th:href="@{/enterprise/{id}/users}">Ver lista de Empresas</a></button>
 </div>
 
 <script th:inline="javascript">
@@ -66,10 +66,10 @@
             Command : toastr["success"]("Empleado actualizado con éxito!")
         }
         else if (msg == "it was deleted"){
-            Command : toastr["error"]("Registro de empleado eliminado con éxito!")
+            Command : toastr["error"]("Empleado eliminado con éxito!")
         }
         else if (msg == "error deleting"){
-            Command : toastr["error"]("Registro de empleado no ha sido eliminado!")
+            Command : toastr["error"]("Empleado no ha sido eliminado!")
         }
         toastr.options={
             "positionClass": "toast-top-right",

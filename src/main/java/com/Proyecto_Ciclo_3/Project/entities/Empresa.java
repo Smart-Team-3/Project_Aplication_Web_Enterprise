@@ -1,6 +1,7 @@
 package com.Proyecto_Ciclo_3.Project.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -14,6 +15,9 @@ public class Empresa {
     private String direccion;
     private String telefono;
     private String nit;
+    @OneToMany(mappedBy = "enterprise", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    private List<MovimientoDinero> movements;
 
     public Empresa() {
 

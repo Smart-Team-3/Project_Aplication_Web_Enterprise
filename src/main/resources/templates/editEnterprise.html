@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
     a{
-    color:white;
+    color:grey;
     }
     a:hover {
     color: #616A6B;
@@ -23,7 +23,7 @@
   <h1> Actualice aqui los datos de la Empresa</h1>
   <br>
 
-  <form th:action="@{/updateenterprise}" th:object="${enterprise}" method="post">
+  <form th:action="@{/updateenterprise/{id}}" th:object="${enterprise}" method="post">
 
     <div class="row">
       <div class="form-group col-md-12">

@@ -1,6 +1,11 @@
 package com.Proyecto_Ciclo_3.Project.entities;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
+import java.util.List;
+import java.util.Objects;
 
 @Entity//entidad
 @Table(name="empleados")//para base de datos
@@ -11,7 +16,10 @@ public class Empleado {
     private int id;//key
     private String nombre;
     private String correo;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MovimientoDinero> movements;
     @ManyToOne()
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="empresa_id")//enlaza
     private Empresa empresa;//llamo a Empresa debo asociar
     private String rol;
@@ -66,10 +74,10 @@ public class Empleado {
     }
 
     public void setRol(String rol) {
-        if(rol != "administrativo" || rol != "operativo"){
-            System.out.println("El rol no existe");
+        if(Objects.equals(rol, "administrativo") || Objects.equals(rol, "operativo")){
+            this.rol = rol;
         }
-        this.rol = rol;
+        System.out.println("El rol no existe");
     }
 
 

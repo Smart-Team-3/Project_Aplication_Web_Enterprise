@@ -65,7 +65,7 @@ public class UsersController {
         redirectAttributes.addFlashAttribute("message","it was not updated");
         return "redirect:/adduser";
     }
-    @GetMapping("/deleteuser")
+    @GetMapping("/deleteuser/{id}")
     public String DeleteUser(@PathVariable Integer id,RedirectAttributes redirectAttributes){
         if(usersService.DeleteUser(id)){
             redirectAttributes.addFlashAttribute("message","it was deleted");
@@ -80,5 +80,4 @@ public class UsersController {
         model.addAttribute("userList", usersList);
         return "viewUsers";
     }
-
 }

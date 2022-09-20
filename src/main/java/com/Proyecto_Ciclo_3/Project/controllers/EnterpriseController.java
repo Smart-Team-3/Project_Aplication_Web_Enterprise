@@ -49,7 +49,7 @@ public class EnterpriseController {
         model.addAttribute("message",message);
         return "editEnterprise";
     }
-    @PostMapping("/updateenterprise")
+    @PostMapping("/updateenterprise/{id}")
     public String UpdateEnterprise(@ModelAttribute("enterprise") Empresa enterprise,RedirectAttributes redirectAttributes){
         if(enterpriseService.UpdateOrChangeEnterprise(enterprise)){
             redirectAttributes.addFlashAttribute("message","it was updated");

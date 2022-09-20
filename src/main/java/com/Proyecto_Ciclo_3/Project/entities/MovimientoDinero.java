@@ -2,6 +2,8 @@ package com.Proyecto_Ciclo_3.Project.entities;
 
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -14,6 +16,10 @@ public class MovimientoDinero {
     private long monto;
     private String concepto;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Empresa enterprise;
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "empleado_id")
     private Empleado usuario;
 

@@ -23,6 +23,7 @@ public class EnterpriseService {
 
     }
     public Optional<Empresa> GetEnterpriseById(Integer id){
+
         return enterpriseRepository.findById(id);
     }
     //metodo para definir o actulizar el nombre de la empresa
@@ -37,7 +38,5 @@ public class EnterpriseService {
         }
         return false;
     }
-
-
 
 }
