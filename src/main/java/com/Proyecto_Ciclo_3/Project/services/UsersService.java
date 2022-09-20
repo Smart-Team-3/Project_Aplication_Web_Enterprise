@@ -25,7 +25,7 @@ public class UsersService {
     public Optional<Empleado> getUserById (Integer id){
         return usersRepository.findById(id);
     }
-    public ArrayList<Empleado> getUsersByEnterprise(Integer id){
+    public ArrayList<Empleado> getUsersByEnterprise (Integer id){
 
         return usersRepository.findByEnterprise(id);
     }

@@ -38,6 +38,7 @@ public class UsersController {
         model.addAttribute("user",user);
         model.addAttribute("message",message);
         List<Empresa> EnterpriseList = enterpriseService.GetAllEnterprises();
+        model.addAttribute("enterpriseList",EnterpriseList);
         return "addUser";
     }
     @PostMapping("/saveuser")
