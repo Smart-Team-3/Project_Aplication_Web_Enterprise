@@ -32,8 +32,8 @@ public class MovementController {
 // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA CREAR UN NUEVO MTO
     @GetMapping ("/addmovement")
     public String newMovemt(Model model, @ModelAttribute("message") String message){
-        MovimientoDinero movemnt = new MovimientoDinero();
-        model.addAttribute("mov",movemnt);
+        MovimientoDinero movement = new MovimientoDinero();
+        model.addAttribute("mov",movement);
         model.addAttribute("message",message);
         List<Empleado> UserList= usersService.getAllUsers();
         model.addAttribute("userList",UserList);

@@ -12,16 +12,11 @@ import java.util.ArrayList;
 public interface MovementRepository extends JpaRepository <MovimientoDinero,Integer>{
 
     // METODO PARA FILTRAR MTO CON EL ID DEL USUARIO
-    @Query(value="select * from movement where empleado_id= ?1", nativeQuery = true)
-    public abstract ArrayList<MovimientoDinero> findByUser (Integer id);
+    @Query(value="SELECT * FROM movimientos where empleado_id= ?1", nativeQuery = true)
+    public abstract ArrayList<MovimientoDinero> findByUser(Integer id);
 
     // METODO PARA FILTRAR MTO CON EL ID DE LA EMPRESA
-    @Query(value = "select * from movement where empleado_id in (select id where empresa= ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM movimientos where empleado_id in (SELECT id where empresa_id= ?1", nativeQuery = true)
     public abstract ArrayList<MovimientoDinero> findByEnterprise(Integer id);
-
-
-
-
-
 
 }

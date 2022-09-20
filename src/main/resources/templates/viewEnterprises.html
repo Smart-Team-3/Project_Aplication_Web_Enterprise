@@ -46,7 +46,7 @@
                 <td th:text="${empresa.nit}"></td>
 
                 <td><button type="button" class="btn btn-info"><a th:href="@{/enterprise/{id}/users(id=${empresa.id})}">Ver</a></button></td>
-                <td><button type="button" class="btn btn-warning"><a th:href="@{/editenterprise/{id}(id=${empresa.id})}">Editar</a></button></td>
+                <td><button type="button" class="btn btn-warning"><a th:href="@{/updateenterprise/{id}(id=${empresa.id})}">Editar</a></button></td>
                 <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteenterprise/{id}(id=${empresa.id})}">Eliminar</a></button></td>
             </tr>
         </table>

@@ -52,15 +52,15 @@
         <td th:if="${movimiento.concepto=='8'}">Nomina</td>
         <td th:text="${movimiento.usuario.nombre}"></td>
         <td th:text="${#dates.format(movimiento.fecha, 'dd/MM/yyyy')}"></td>
-        <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarMovimiento/{id}(id=${movimiento.id})}">Editar</a></button></td>
-        <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarMovimiento/{id}(id=${movimiento.id})}">Eliminar</a></button></td>
+        <td><button type="button" class="btn btn-warning"><a th:href="@{/editmovement/{id}(id=${movimiento.id})}">Editar</a></button></td>
+        <td><button type="button" class="btn btn-danger"><a th:href="@{/deletemovement(id=${movimiento.id})}">Eliminar</a></button></td>
     </tr>
 </table>
 
       <nav aria-label="Ejemplo navegacion">
         <ul class="pagination mt-4">
             <li th:class="${paginaActual==estado.index} ? 'active' : '' " th:each="pagina, estado: ${paginas}" class="page-item">
-                <a th:href="@{/VerMovimientos/(pagina=${estado.index})}" class="page-link" th:text="${estado.index}+1"></a>
+                <a th:href="@{/viewmovement/(pagina=${estado.index})}" class="page-link" th:text="${estado.index}+1"></a>
             </li>
         </ul>
     </nav>
@@ -75,13 +75,13 @@
     </div>
 
 
-    <button type="button" class="btn btn-info"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>
+    <button type="button" class="btn btn-info"><a th:href="@{/addmovement}">Agregar Nuevo Movimiento</a></button>
     <br><br>
 
-    <button type="button" class="btn btn-primary"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button>
+    <button type="button" class="btn btn-primary"><a th:href="@{/viewenterprises}">Ver lista de Empresas</a></button>
     <br><br>
 
-    <button type="button" class="btn btn-primary"><a th:href="@{/VerEmpleados}">Ver lista de Empleados</a></button>
+    <button type="button" class="btn btn-primary"><a th:href="@{/viewusers}">Ver lista de Empleados</a></button>
 </div>
 
 <script th:inline="javascript">
