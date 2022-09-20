@@ -77,7 +77,6 @@ public class Empleado {
         if(Objects.equals(rol, "administrativo") || Objects.equals(rol, "operativo")){
             this.rol = rol;
         }
-        System.out.println("El rol no existe");
     }
 
 
