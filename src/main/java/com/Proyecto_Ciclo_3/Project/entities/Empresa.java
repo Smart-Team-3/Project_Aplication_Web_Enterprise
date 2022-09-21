@@ -15,9 +15,9 @@ public class Empresa {
     private String direccion;
     private String telefono;
     private String nit;
-    @OneToMany(mappedBy = "enterprise", cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "enterprise", cascade = CascadeType.ALL)
     private List<MovimientoDinero> movements;
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
     private List<Empleado> users;
     public Empresa() {
 

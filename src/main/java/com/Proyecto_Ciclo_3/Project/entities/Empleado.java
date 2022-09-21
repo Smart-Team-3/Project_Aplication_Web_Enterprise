@@ -16,7 +16,7 @@ public class Empleado {
     private int id;//key
     private String nombre;
     private String correo;
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<MovimientoDinero> movements;
     @ManyToOne()
     @OnDelete(action = OnDeleteAction.CASCADE)

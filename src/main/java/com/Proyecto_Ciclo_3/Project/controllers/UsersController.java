@@ -55,6 +55,8 @@ public class UsersController {
         Empleado user = usersService.getUserById(id).get();
         model.addAttribute("user",user);
         model.addAttribute("message",message);
+        List<Empresa> EnterpriseList = enterpriseService.GetAllEnterprises();
+        model.addAttribute("enterpriseList",EnterpriseList);
         return "editUsers";
     }
     @PostMapping("/updateuser")

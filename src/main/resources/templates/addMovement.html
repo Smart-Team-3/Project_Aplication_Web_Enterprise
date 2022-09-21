@@ -46,7 +46,6 @@
                         <option th:value=8>Transporte</option>
                         <option th:value=8>Seguridad Social</option>
 
-
                     </select>
                 </div>
             </div>
@@ -67,7 +66,7 @@
                 <label class="col-md-3" for="usuario">Empleado responsable:</label>
                 <div class="col-md-6">
                     <select th:field="*{usuario}" class="form-control" id="usuario" required="required" readonly>
-                        <option th:text="${#httpServletRequest.remoteUser}" th:value="${idEmpleado}"></option>
+                        <option th:each = "user: ${userList}" th:value="${user.id}" th:text = "${user.nombre}"></option>
                     </select>
                 </div>
             </div>
@@ -96,7 +95,7 @@
 
 </div>
 <script th:inline="javascript">
-  window.onload=function(){
+  window.unload=function(){
   document.getElementById("fecha").value=new Date().toJSON().slice(0,10).replace(/-/g,'-');
   }
 </script>

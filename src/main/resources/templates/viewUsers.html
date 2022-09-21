@@ -11,7 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <style>
     a{
-    color:black;
+    color:red;
     }
     a:hover {
     color: black;
@@ -43,7 +43,7 @@
     <td th:text="${empleado.empresa.nombre}"></td>
     <td th:if="${empleado.rol=='administrativo'}">administrativo</td>
     <td th:if="${empleado.rol=='operativo'}">operativo</td>
-    <td><button type="button" class="btn btn-info"><a th:href="@{/editmovement/{id}(id=${empleado.id})}">Ver</a></button></td>
+    <td><button type="button" class="btn btn-info"><a th:href="@{/user/{id}/movements(id=${empleado.id})}">Ver</a></button></td>
     <td><button type="button" class="btn btn-warning"><a th:href="@{/edituser/{id}(id=${empleado.id})}">Editar</a></button></td>
     <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteuser/{id}(id=${empleado.id})}">Eliminar</a></button></td>
   </tr>
@@ -66,10 +66,10 @@
             Command : toastr["success"]("Empleado actualizado con éxito!")
         }
         else if (msg == "it was deleted"){
-            Command : toastr["error"]("Empleado eliminado con éxito!")
+            Command : toastr["success"]("Registro de empleado eliminado con éxito!")
         }
         else if (msg == "error deleting"){
-            Command : toastr["error"]("Empleado no ha sido eliminado!")
+            Command : toastr["error"]("Registro de empleado no ha sido eliminado!")
         }
         toastr.options={
             "positionClass": "toast-top-right",

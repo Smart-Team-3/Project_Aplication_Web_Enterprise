@@ -38,16 +38,16 @@
 
             </tr>
 
-            <tr th:each="empresa : ${enterpriseList}"> <!--el modelo guarda la lista de todas las empr-->
-                <td th:text="${empresa.id}"></td>
-                <td th:text="${empresa.nombre}"></td>
-                <td th:text="${empresa.direccion}"></td>
-                <td th:text="${empresa.telefono}"></td>
-                <td th:text="${empresa.nit}"></td>
+            <tr th:each="enterprise : ${enterpriseList}"> <!--el modelo guarda la lista de todas las empr-->
+                <td th:text="${enterprise.id}"></td>
+                <td th:text="${enterprise.nombre}"></td>
+                <td th:text="${enterprise.direccion}"></td>
+                <td th:text="${enterprise.telefono}"></td>
+                <td th:text="${enterprise.nit}"></td>
 
-                <td><button type="button" class="btn btn-info"><a th:href="@{/enterprise/{id}/users(id=${empresa.id})}">Ver</a></button></td>
-                <td><button type="button" class="btn btn-warning"><a th:href="@{/updateenterprise/{id}(id=${empresa.id})}">Editar</a></button></td>
-                <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteenterprise/{id}(id=${empresa.id})}">Eliminar</a></button></td>
+                <td><button type="button" class="btn btn-info"><a th:href="@{/enterprise/{id}/users(id=${enterprise.id})}">Ver</a></button></td>
+                <td><button type="button" class="btn btn-warning"><a th:href="@{/editenterprise/{id}(id=${enterprise.id})}">Editar</a></button></td>
+                <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteenterprise/{id}(id=${enterprise.id})}">Eliminar</a></button></td>
             </tr>
         </table>
 
@@ -68,10 +68,10 @@
                 Command : toastr["success"]("Empresa actualizada con éxito!")
             }
             else if (msg == "it was deleted"){
-                Command : toastr["error"]("Registro de empresa eliminada con éxito!")
+                Command : toastr["success"]("Empresa eliminada con éxito!")
             }
             else if (msg == "error deleting"){
-                Command : toastr["error"]("Registro de empresa no ha sido eliminada!")
+                Command : toastr["error"]("Empresa no ha sido eliminada!")
             }
             toastr.options={
                 "positionClass": "toast-top-right",

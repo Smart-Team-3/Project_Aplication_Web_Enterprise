@@ -1,11 +1,11 @@
 package com.Proyecto_Ciclo_3.Project.entities;
 
 
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="movimientos")
@@ -15,6 +15,7 @@ public class MovimientoDinero {
     private int id;
     private long monto;
     private String concepto;
+    private Date fecha;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Empresa enterprise;
@@ -30,6 +31,7 @@ public class MovimientoDinero {
         this.monto = monto;
         this.concepto = concepto;
         this.usuario = usuario;
+        this.setFecha(getFecha());
     }
 
     public int getId() {
@@ -64,6 +66,13 @@ public class MovimientoDinero {
         this.usuario = usuario;
     }
 
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 }
 
 
