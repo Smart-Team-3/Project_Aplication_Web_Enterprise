@@ -43,11 +43,11 @@ public class MovementController {
     @PostMapping("/savemovement")
     public String SaveMovement(MovimientoDinero mov, RedirectAttributes redirectAttributes){
         if(movementService.SaveOrUpdateMovement(mov)){
-            redirectAttributes.addAttribute("message","saved");
-            return "redirect:/viewMovement";
+            redirectAttributes.addAttribute("message","it was saved");
+            return "redirect:/viewmovement";
         }
-        redirectAttributes.addFlashAttribute("message","request failed");
-        return "redirect:/addMovement";
+        redirectAttributes.addFlashAttribute("message","it was not saved");
+        return "redirect:/addmovement";
     }
     // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA EDITAR UN MTO
     @GetMapping("/editmovement/{id}")
@@ -63,21 +63,33 @@ public class MovementController {
     @PostMapping("/updatemovement")
     public String UpdateMovement(@ModelAttribute("mov") MovimientoDinero mov,RedirectAttributes redirectAttributes){
         if(movementService.SaveOrUpdateMovement(mov)){
-            redirectAttributes.addFlashAttribute("message","updated");
-            return "redirect:/viewMovement";
+            redirectAttributes.addFlashAttribute("message","it was updated");
+            return "redirect:/viewmovement";
         }
-        redirectAttributes.addFlashAttribute("message","request failed");
-        return "redirect:/editMovement/"+mov.getId();
+        redirectAttributes.addFlashAttribute("message","it was not updated");
+        return "redirect:/editmovement/"+mov.getId();
     }
     // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA ELIMINAR UN NUEVO MTO
     @GetMapping("/deletemovement")
     public String DeleteMovement(@PathVariable Integer id,RedirectAttributes redirectAttributes) {
         if (movementService.DeleteMovement(id)) {
-            redirectAttributes.addFlashAttribute("message", "deleted");
-            return "redirect:/viewMovement";
+            redirectAttributes.addFlashAttribute("message", "it was deleted");
+            return "redirect:/viewmovement";
         }
-        redirectAttributes.addFlashAttribute("message", "request failed");
-        return "redirect:/viewMovement";
+        redirectAttributes.addFlashAttribute("message", "it was not deleted");
+        return "redirect:/viewmovement";
+    }
+    @GetMapping("/users/{id}/movements")
+    public String GetMovementsByUsers(@PathVariable("id") Integer id,Model model){
+        List<MovimientoDinero> usersList = movementService.GetByUser(id);
+        model.addAttribute("usersList",usersList);
+        return "viewMovement";
+    }
+    @GetMapping("/enterprise/{id}/movements")
+    public String GetMovementByEnterprise(@PathVariable("id") Integer id,Model model){
+        List<MovimientoDinero> movementList = movementService.GetByEnterprise(id);
+        model.addAttribute("movementList",movementList);
+        return "viewMovement";
     }
 }
 

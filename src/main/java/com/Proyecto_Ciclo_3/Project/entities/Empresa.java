@@ -1,6 +1,7 @@
 package com.Proyecto_Ciclo_3.Project.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,19 +16,22 @@ public class Empresa {
     private String direccion;
     private String telefono;
     private String nit;
-    @OneToMany(mappedBy = "enterprise", cascade = CascadeType.ALL)
-    private List<MovimientoDinero> movements;
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
     private List<Empleado> users;
+    @OneToMany(mappedBy = "enterprise", cascade = CascadeType.ALL)
+    private List<MovimientoDinero> movements;
+
     public Empresa() {
 
     }
 
-    public Empresa(String nombre, String direccion, String telefono, String NIT) {
+    public Empresa(String nombre, String direccion, String telefono, String NIT, ArrayList<Empleado> users,ArrayList<MovimientoDinero> movements) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.nit = NIT;
+        this.users = users;
+        this.movements = movements;
     }
 
     public int getId() {
@@ -70,4 +74,19 @@ public class Empresa {
         this.nit = nit;
     }
 
+    public List<Empleado> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<Empleado> users) {
+        this.users = users;
+    }
+
+    public List<MovimientoDinero> getMovements() {
+        return movements;
+    }
+
+    public void setMovements(List<MovimientoDinero> movements) {
+        this.movements = movements;
+    }
 }

@@ -43,7 +43,7 @@
     <td th:text="${empleado.empresa.nombre}"></td>
     <td th:if="${empleado.rol=='administrativo'}">administrativo</td>
     <td th:if="${empleado.rol=='operativo'}">operativo</td>
-    <td><button type="button" class="btn btn-info"><a th:href="@{/user/{id}/movements(id=${empleado.id})}">Ver</a></button></td>
+    <td><button type="button" class="btn btn-info"><a th:href="@{/users/{id}/movements(id=${empleado.id})}">Ver</a></button></td>
     <td><button type="button" class="btn btn-warning"><a th:href="@{/edituser/{id}(id=${empleado.id})}">Editar</a></button></td>
     <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteuser/{id}(id=${empleado.id})}">Eliminar</a></button></td>
   </tr>

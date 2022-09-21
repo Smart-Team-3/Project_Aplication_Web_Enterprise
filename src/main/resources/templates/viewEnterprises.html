@@ -31,8 +31,8 @@
                 <th>Direccion</th>
                 <th>Telefono</th>
                 <th>NIT</th>
-
                 <th>Empleados</th>
+                <th>Movimientos</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
 
@@ -46,6 +46,7 @@
                 <td th:text="${enterprise.nit}"></td>
 
                 <td><button type="button" class="btn btn-info"><a th:href="@{/enterprise/{id}/users(id=${enterprise.id})}">Ver</a></button></td>
+                <td><button type="button" class="btn btn-primary"><a th:href="@{/enterprise/{id}/movements(id=${enterprise.id})}">Ver</a></button></td>
                 <td><button type="button" class="btn btn-warning"><a th:href="@{/editenterprise/{id}(id=${enterprise.id})}">Editar</a></button></td>
                 <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteenterprise/{id}(id=${enterprise.id})}">Eliminar</a></button></td>
             </tr>
