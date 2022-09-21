@@ -43,9 +43,11 @@ public class MovementService {
     }
 
    public ArrayList<MovimientoDinero> GetByUser(Integer id) { // OBTENER MTO POR ID DE EMPLEADO
+
         return movementRepository.findByUser(id);
     }
    public ArrayList<MovimientoDinero> GetByEnterprise(Integer id) { //OBTENER MTO POR ID DE EMPRESA REGISTRADA POR LO EMPLEADOS
+
         return movementRepository.findByEnterprise(id);
    }
 

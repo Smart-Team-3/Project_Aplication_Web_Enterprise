@@ -22,6 +22,7 @@ public class MovimientoDinero {
     private Empleado usuario;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "empresa_id")
     private Empresa enterprise;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha;

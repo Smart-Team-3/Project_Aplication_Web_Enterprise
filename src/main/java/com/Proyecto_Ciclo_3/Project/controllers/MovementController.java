@@ -41,8 +41,8 @@ public class MovementController {
     }
     // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA GUARDAR UN NUEVO MTO
     @PostMapping("/savemovement")
-    public String SaveMovement(MovimientoDinero mov, RedirectAttributes redirectAttributes){
-        if(movementService.SaveOrUpdateMovement(mov)){
+    public String SaveMovement(MovimientoDinero movement, RedirectAttributes redirectAttributes){
+        if(movementService.SaveOrUpdateMovement(movement)){
             redirectAttributes.addAttribute("message","it was saved");
             return "redirect:/viewmovement";
         }
@@ -52,8 +52,8 @@ public class MovementController {
     // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA EDITAR UN MTO
     @GetMapping("/editmovement/{id}")
     public String EditMovement(Model model, @PathVariable Integer id,@ModelAttribute("message") String message){
-        MovimientoDinero mov= movementService.GetMovementsById(id);
-        model.addAttribute("mov", mov);
+        MovimientoDinero movement= movementService.GetMovementsById(id);
+        model.addAttribute("mov", movement);
         model.addAttribute("message",message);
         List<Empleado> UserList= usersService.getAllUsers();
         model.addAttribute("userlist", UserList);
@@ -61,13 +61,13 @@ public class MovementController {
     }
     // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA ACTUALIZAR UN NUEVO MTO
     @PostMapping("/updatemovement")
-    public String UpdateMovement(@ModelAttribute("mov") MovimientoDinero mov,RedirectAttributes redirectAttributes){
-        if(movementService.SaveOrUpdateMovement(mov)){
+    public String UpdateMovement(@ModelAttribute("mov") MovimientoDinero movement,RedirectAttributes redirectAttributes){
+        if(movementService.SaveOrUpdateMovement(movement)){
             redirectAttributes.addFlashAttribute("message","it was updated");
             return "redirect:/viewmovement";
         }
         redirectAttributes.addFlashAttribute("message","it was not updated");
-        return "redirect:/editmovement/"+mov.getId();
+        return "redirect:/editmovement/"+movement.getId();
     }
     // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA ELIMINAR UN NUEVO MTO
     @GetMapping("/deletemovement")
