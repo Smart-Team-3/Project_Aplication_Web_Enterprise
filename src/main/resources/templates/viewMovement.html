@@ -55,7 +55,7 @@
         <td th:text="${movement.enterprise}"></td>
         <td th:text="${#dates.format(movement.fecha, 'dd/MM/yyyy')}"></td>
         <td><button type="button" class="btn btn-warning"><a th:href="@{/editmovement/{id}(id=${movement.id})}">Editar</a></button></td>
-        <td><button type="button" class="btn btn-danger"><a th:href="@{/deletemovement(id=${movement.id})}">Eliminar</a></button></td>
+        <td><button type="button" class="btn btn-danger"><a th:href="@{/deletemovement/{id}(id=${movement.id})}">Eliminar</a></button></td>
     </tr>
 </table>
 

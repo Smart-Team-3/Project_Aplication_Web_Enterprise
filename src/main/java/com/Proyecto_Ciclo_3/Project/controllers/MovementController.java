@@ -72,7 +72,7 @@ public class MovementController {
         return "redirect:/editmovement/"+movement.getId();
     }
     // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA ELIMINAR UN NUEVO MTO
-    @GetMapping("/deletemovement")
+    @GetMapping("/deletemovement/{id}")
     public String DeleteMovement(@PathVariable("id") Integer id,RedirectAttributes redirectAttributes) {
         if (movementService.DeleteMovement(id)) {
             redirectAttributes.addFlashAttribute("message", "it was deleted");
@@ -83,8 +83,8 @@ public class MovementController {
     }
     @GetMapping("/users/{id}/movements")
     public String GetMovementsByUsers(@PathVariable("id") Integer id,Model model){
-        List<MovimientoDinero> usersList = movementService.GetByUser(id);
-        model.addAttribute("usersList",usersList);
+        List<MovimientoDinero> movementList = movementService.GetByUser(id);
+        model.addAttribute("movementList",movementList);
         return "viewMovement";
     }
     @GetMapping("/enterprise/{id}/movements")
