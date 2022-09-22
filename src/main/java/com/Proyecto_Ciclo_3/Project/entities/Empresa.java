@@ -26,6 +26,7 @@ public class Empresa {
     }
 
     public Empresa(String nombre, String direccion, String telefono, String NIT, ArrayList<Empleado> users,ArrayList<MovimientoDinero> movements) {
+
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;

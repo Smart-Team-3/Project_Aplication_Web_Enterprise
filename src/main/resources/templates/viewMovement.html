@@ -42,14 +42,18 @@
 
     <tr th:each="movement : ${movementList}">
         <td th:text="${movement.id}"></td>
-        <td th:if="${movement.concepto=='1'}">Papeleria</td>
-        <td th:if="${movement.concepto=='2'}">Servicios Publicos/privados</td>
-        <td th:if="${movement.concepto=='3'}">Operativos</td>
-        <td th:if="${movement.concepto=='4'}">Caja Menor</td>
-        <td th:if="${movement.concepto=='5'}">Tributario</td>
-        <td th:if="${movement.concepto=='6'}">Mobiliario</td>
+        <td th:if="${movement.concepto=='1'}">Materias Primas</td>
+        <td th:if="${movement.concepto=='2'}">Aditivos</td>
+        <td th:if="${movement.concepto=='3'}">Empaques</td>
+        <td th:if="${movement.concepto=='4'}">Servicios Publicos</td>
+        <td th:if="${movement.concepto=='5'}">Arriendo</td>
+        <td th:if="${movement.concepto=='6'}">Nomina</td>
         <td th:if="${movement.concepto=='7'}">Maquinaria y Equipo</td>
-        <td th:if="${movement.concepto=='8'}">Nomina</td>
+        <td th:if="${movement.concepto=='8'}">Aseo</td>
+        <td th:if="${movement.concepto=='9'}">Papeleria</td>
+        <td th:if="${movement.concepto=='10'}">Proviciones Tributarias</td>
+        <td th:if="${movement.concepto=='11'}">Transporte</td>
+        <td th:if="${movement.concepto=='12'}">Seguridad Social</td>
         <td class="text-right" th:text="${#numbers.formatCurrency(movement.monto)}"></td>
         <td th:text="${movement.usuario.nombre}"></td>
         <td th:text="${movement.enterprise}"></td>
