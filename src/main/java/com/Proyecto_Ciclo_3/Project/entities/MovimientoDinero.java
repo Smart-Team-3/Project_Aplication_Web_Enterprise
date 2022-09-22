@@ -24,18 +24,21 @@ public class MovimientoDinero {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "empresa_id")
     private Empresa enterprise;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date fecha;
+
+    private Double sumaMontos;
 
     public MovimientoDinero() {
     }
 
-    public MovimientoDinero(long monto, String concepto, Empleado usuario,Empresa enterprise, Date fecha) {
+    public MovimientoDinero(long monto, String concepto, Empleado usuario,Empresa enterprise, Date fecha,Double sumaMontos) {
         this.monto = monto;
         this.concepto = concepto;
         this.usuario = usuario;
         this.enterprise = enterprise;
         this.fecha = fecha ;
+        this.sumaMontos = sumaMontos;
     }
 
     public int getId() {
@@ -69,6 +72,13 @@ public class MovimientoDinero {
     public void setUsuario(Empleado usuario) {
         this.usuario = usuario;
     }
+    public Empresa getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Empresa enterprise) {
+        this.enterprise = enterprise;
+    }
 
     public Date getFecha() {
         return fecha;
@@ -78,12 +88,25 @@ public class MovimientoDinero {
         this.fecha = fecha;
     }
 
-    public Empresa getEnterprise() {
-        return enterprise;
+    @Override
+    public String toString() {
+        return "MovimientoDinero{" +
+                "id=" + id +
+                ", concepto='" + concepto + '\'' +
+                ", monto=" + monto +
+                ", usuario=" + usuario +
+                ", enterprise=" + enterprise +
+                ", fecha=" + fecha +
+                '}';
     }
 
-    public void setEnterprise(Empresa enterprise) {
-        this.enterprise = enterprise;
+    public Double getSumaMontos() {
+
+        return sumaMontos;
+    }
+
+    public void setSumaMontos(Double sumaMontos) {
+        this.sumaMontos = sumaMontos;
     }
 }
 

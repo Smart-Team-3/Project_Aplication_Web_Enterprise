@@ -25,15 +25,17 @@ public class MovementController {
     @GetMapping("/viewmovement")
     public String viewMovement(Model model, @ModelAttribute("message") String message) {
         List<MovimientoDinero> movementList = movementService.GetAllMovements();
-        model.addAttribute("movList", movementList);
+        model.addAttribute("movementList", movementList);
         model.addAttribute("message", message);
+        Long sumMonto = movementService.GetTotalMoney();
+        model.addAttribute("sumaMontos",sumMonto);
         return "viewMovement";
     }
 // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA CREAR UN NUEVO MTO
     @GetMapping ("/addmovement")
     public String newMovemt(Model model, @ModelAttribute("message") String message){
         MovimientoDinero movement = new MovimientoDinero();
-        model.addAttribute("mov",movement);
+        model.addAttribute("movement",movement);
         model.addAttribute("message",message);
         List<Empleado> UserList= usersService.getAllUsers();
         model.addAttribute("userList",UserList);
@@ -51,9 +53,9 @@ public class MovementController {
     }
     // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA EDITAR UN MTO
     @GetMapping("/editmovement/{id}")
-    public String EditMovement(Model model, @PathVariable Integer id,@ModelAttribute("message") String message){
-        MovimientoDinero movement= movementService.GetMovementsById(id);
-        model.addAttribute("mov", movement);
+    public String EditMovement(Model model, @PathVariable("id") Integer id,@ModelAttribute("message") String message){
+        MovimientoDinero movement= movementService.GetMovementsById(id).get();
+        model.addAttribute("movement", movement);
         model.addAttribute("message",message);
         List<Empleado> UserList= usersService.getAllUsers();
         model.addAttribute("userlist", UserList);
@@ -61,7 +63,7 @@ public class MovementController {
     }
     // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA ACTUALIZAR UN NUEVO MTO
     @PostMapping("/updatemovement")
-    public String UpdateMovement(@ModelAttribute("mov") MovimientoDinero movement,RedirectAttributes redirectAttributes){
+    public String UpdateMovement(@ModelAttribute("movement") MovimientoDinero movement,RedirectAttributes redirectAttributes){
         if(movementService.SaveOrUpdateMovement(movement)){
             redirectAttributes.addFlashAttribute("message","it was updated");
             return "redirect:/viewmovement";
@@ -71,7 +73,7 @@ public class MovementController {
     }
     // CONTROLADOR QUE NOS REDIRECCIONA EL TEMPLATE PARA ELIMINAR UN NUEVO MTO
     @GetMapping("/deletemovement")
-    public String DeleteMovement(@PathVariable Integer id,RedirectAttributes redirectAttributes) {
+    public String DeleteMovement(@PathVariable("id") Integer id,RedirectAttributes redirectAttributes) {
         if (movementService.DeleteMovement(id)) {
             redirectAttributes.addFlashAttribute("message", "it was deleted");
             return "redirect:/viewmovement";

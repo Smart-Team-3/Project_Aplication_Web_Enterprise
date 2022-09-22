@@ -52,7 +52,7 @@
         <td th:if="${movement.concepto=='8'}">Nomina</td>
         <td class="text-right" th:text="${#numbers.formatCurrency(movement.monto)}"></td>
         <td th:text="${movement.usuario.nombre}"></td>
-        <td th:text="${movement.enterprise.id}"></td>
+        <td th:text="${movement.enterprise}"></td>
         <td th:text="${#dates.format(movement.fecha, 'dd/MM/yyyy')}"></td>
         <td><button type="button" class="btn btn-warning"><a th:href="@{/editmovement/{id}(id=${movement.id})}">Editar</a></button></td>
         <td><button type="button" class="btn btn-danger"><a th:href="@{/deletemovement(id=${movement.id})}">Eliminar</a></button></td>
@@ -69,9 +69,9 @@
 
      <div class="row">
         <div class="form-group col-md-12">
-            <label class="col-md-3" for="SumaMontos">Total Movimientos:</label>
+            <label class="col-md-3" for="sumaMontos">Total Movimientos:</label>
             <div class="col-md-6">
-                <p th:text="${#numbers.formatCurrency(SumaMontos)}" class="form-control" id="SumaMontos"></p>
+                <p th:text="${#numbers.formatCurrency(sumaMontos)}" class="form-control" id="sumaMontos"></p>
             </div>
         </div>
     </div>

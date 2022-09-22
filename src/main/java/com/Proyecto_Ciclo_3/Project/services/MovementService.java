@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovementService {
@@ -22,8 +23,8 @@ public class MovementService {
         return movimientosList;
     }
 
-    public MovimientoDinero GetMovementsById(Integer id){
-        return movementRepository.findById(id).get();
+    public Optional<MovimientoDinero> GetMovementsById(Integer id){
+        return movementRepository.findById(id);
     }
 
     public boolean SaveOrUpdateMovement(MovimientoDinero movimientoDinero){
@@ -50,7 +51,9 @@ public class MovementService {
 
         return movementRepository.findByEnterprise(id);
    }
-
+   public Long GetTotalMoney(){
+        return movementRepository.sumMonto();
+   }
 
 }
 

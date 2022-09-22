@@ -8,9 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-    "background-color:grey"
     a{
-    color:white;
+    color:black;
     }
     a:hover {
     color: black;
@@ -27,7 +26,7 @@
     <h1> Agregue aqui los datos del movimiento</h1>
     <br>
 
-    <form th:action="@{/savemovement}" th:object="${mov}" method="post">
+    <form th:action="@{/savemovement}" th:object="${movement}" method="post">
 
         <div class="row">
             <div class="form-group col-md-12">
@@ -42,10 +41,10 @@
                         <option th:value=6>Nómina</option>
                         <option th:value=7>Maquinaria y Equipo</option>
                         <option th:value=8>Aseo</option>
-                        <option th:value=8>Papelería</option>
-                        <option th:value=8>Provisiones tributarias</option>
-                        <option th:value=8>Transporte</option>
-                        <option th:value=8>Seguridad Social</option>
+                        <option th:value=9>Papelería</option>
+                        <option th:value=10>Provisiones tributarias</option>
+                        <option th:value=11>Transporte</option>
+                        <option th:value=12>Seguridad Social</option>
 
                     </select>
                 </div>
@@ -72,6 +71,7 @@
                 </div>
             </div>
         </div>
+
 
 
         <div class="row">

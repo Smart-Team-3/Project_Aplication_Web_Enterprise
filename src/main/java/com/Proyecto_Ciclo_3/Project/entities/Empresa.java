@@ -89,4 +89,11 @@ public class Empresa {
     public void setMovements(List<MovimientoDinero> movements) {
         this.movements = movements;
     }
+
+    @Override
+    public String toString() {
+        return
+                nombre ;
+    }
+
 }

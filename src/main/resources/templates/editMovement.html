@@ -26,13 +26,14 @@
     <h1> Modifique aquí los datos del movimiento</h1>
     <br>
 
-    <form th:action="@{/updatemovement}" th:object="${mov}" method="post">
+    <form th:action="@{/updatemovement}" th:object="${movement}" method="post">
+
 
         <div class="row">
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="id">ID del movimiento:</label>
                 <div class="col-md-6">
-                    <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
+                    <input type="text" name="id" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
             </div>
         </div>
 
@@ -50,10 +51,10 @@
                         <option th:value=6>Nómina</option>
                         <option th:value=7>Maquinaria y Equipo</option>
                         <option th:value=8>Aseo</option>
-                        <option th:value=8>Papelería</option>
-                        <option th:value=8>Provisiones tributarias</option>
-                        <option th:value=8>Transporte</option>
-                        <option th:value=8>Seguridad Social</option>
+                        <option th:value=9>Papelería</option>
+                        <option th:value=10>Provisiones tributarias</option>
+                        <option th:value=11>Transporte</option>
+                        <option th:value=12>Seguridad Social</option>
 
                     </select>
                 </div>

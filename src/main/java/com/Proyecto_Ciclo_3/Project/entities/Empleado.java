@@ -16,24 +16,26 @@ public class Empleado {
     private int id;//key
     private String nombre;
     private String correo;
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<MovimientoDinero> movements;
+
     @ManyToOne()
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="empresa_id")//enlaza
     private Empresa empresa;//llamo a Empresa debo asociar
     private String rol;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<MovimientoDinero> movements;
 
     //contructor vacio
     public Empleado() {
     }
 
     //constructor sin id
-    public Empleado(String nombre, String correo, String rol, Empresa empresa) {
+    public Empleado(String nombre, String correo, String rol, Empresa empresa ) {
         this.nombre = nombre;
         this.correo = correo;
         this.rol = rol;
         this.empresa = empresa;
+        this.movements = movements;
     }
 
     //get y set
@@ -90,5 +92,13 @@ public class Empleado {
                 ", rol='" + rol + '\'' +
                 '}';
 
+    }
+
+    public List<MovimientoDinero> getMovements() {
+        return movements;
+    }
+
+    public void setMovements(List<MovimientoDinero> movements) {
+        this.movements = movements;
     }
 }
