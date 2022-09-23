@@ -54,6 +54,12 @@ public class MovementService {
    public Long GetTotalMoney(){
         return movementRepository.sumMonto();
    }
+   public Long GetMoneyFromEnterprise(Integer id){
+        return movementRepository.GetMoneyByEnterprise(id);
+   }
+   public Long GetMoneyFromUsers(Integer id){
+        return movementRepository.GetMoneyByUser(id);
+   }
 
 }
 

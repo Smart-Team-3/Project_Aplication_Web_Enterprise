@@ -85,12 +85,16 @@ public class MovementController {
     public String GetMovementsByUsers(@PathVariable("id") Integer id,Model model){
         List<MovimientoDinero> movementList = movementService.GetByUser(id);
         model.addAttribute("movementList",movementList);
+        Long sumMonto = movementService.GetMoneyFromUsers(id);
+        model.addAttribute("sumaMontos",sumMonto);
         return "viewMovement";
     }
     @GetMapping("/enterprise/{id}/movements")
     public String GetMovementByEnterprise(@PathVariable("id") Integer id,Model model){
         List<MovimientoDinero> movementList = movementService.GetByEnterprise(id);
         model.addAttribute("movementList",movementList);
+        Long sumMonto = movementService.GetMoneyFromEnterprise(id);
+        model.addAttribute("sumaMontos",sumMonto);
         return "viewMovement";
     }
 }
