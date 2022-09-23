@@ -4,7 +4,7 @@
     <title>Lista de Empresas </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -22,7 +22,7 @@
 <body>
 
     <div class="container">
-        <h1> Lista de Empresas</h1>
+        <h1 class="display-5 fw-bold"> Lista de Empresas</h1>
 
         <br><table class="table table-striped">
             <tr>
@@ -45,16 +45,16 @@
                 <td th:text="${enterprise.telefono}"></td>
                 <td th:text="${enterprise.nit}"></td>
 
-                <td><button type="button" class="btn btn-info"><a th:href="@{/enterprise/{id}/users(id=${enterprise.id})}">Ver</a></button></td>
-                <td><button type="button" class="btn btn-primary"><a th:href="@{/enterprise/{id}/movements(id=${enterprise.id})}">Ver</a></button></td>
-                <td><button type="button" class="btn btn-warning"><a th:href="@{/editenterprise/{id}(id=${enterprise.id})}">Editar</a></button></td>
-                <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteenterprise/{id}(id=${enterprise.id})}">Eliminar</a></button></td>
+                <td><button type="button" class="btn btn-info fw-bold"><a th:href="@{/enterprise/{id}/users(id=${enterprise.id})}">Ver</a></button></td>
+                <td><button type="button" class="btn btn-primary fw-bold"><a th:href="@{/enterprise/{id}/movements(id=${enterprise.id})}">Ver</a></button></td>
+                <td><button type="button" class="btn btn-warning fw-bold"><a th:href="@{/editenterprise/{id}(id=${enterprise.id})}">Editar</a></button></td>
+                <td><button type="button" class="btn btn-danger fw-bold"><a th:href="@{/deleteenterprise/{id}(id=${enterprise.id})}">Eliminar</a></button></td>
             </tr>
         </table>
 
-            <button type="button" class="btn btn-info"><a th:href="@{/addenterprise}">Agregar Nueva Empresa</a></button>
+            <button type="button" class="btn btn-info fw-bold"><a th:href="@{/addenterprise}">Agregar Nueva Empresa</a></button>
             <br><br>
-            <button type="button" class="btn btn-primary"><a th:href="@{/viewusers}">Ver Lista de Empleados</a></button>
+            <button type="button" class="btn btn-primary fw-bold"><a th:href="@{/viewusers}">Ver Lista de Empleados</a></button>
     </div>
 
 

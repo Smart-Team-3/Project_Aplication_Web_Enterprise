@@ -4,7 +4,7 @@
     <title>Editar datos de Movimiento</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
@@ -23,7 +23,7 @@
     <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
     <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
 
-    <h1> Modifique aquí los datos del movimiento</h1>
+    <h1 class="display-5 fw-bold"> Cambiar los datos del movimiento</h1>
     <br>
 
     <form th:action="@{/updatemovement}" th:object="${movement}" method="post">
@@ -31,7 +31,7 @@
 
         <div class="row">
             <div class="form-group col-md-12">
-                <label class="col-md-3" for="id">ID del movimiento:</label>
+                <label class="col-md-3 fw-bold" for="id">ID del movimiento:</label>
                 <div class="col-md-6">
                     <input type="text" name="id" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
             </div>
@@ -40,7 +40,7 @@
 
         <div class="row">
             <div class="form-group col-md-12">
-                <label class="col-md-3" for="concepto">Concepto del Movimiento:</label>
+                <label class="col-md-3 fw-bold" for="concepto">Concepto del Movimiento:</label>
                 <div class="col-md-6">
                     <select th:field="*{concepto}" class="form-control" id="concepto" required="required">
                         <option th:value=1>Materias Primas</option>
@@ -64,7 +64,7 @@
 
         <div class="row">
             <div class="form-group col-md-12">
-                <label class="col-md-3" for="monto">Valor del movimiento:</label>
+                <label class="col-md-3 fw-bold" for="monto">Valor del movimiento:</label>
                 <div class="col-md-6">
                     <input type="number" th:field="*{monto}" class="form-control" id="monto" required="required"></div>
             </div>
@@ -73,7 +73,7 @@
 
         <div class="row">
             <div class="form-group col-md-12">
-                <label class="col-md-3" for="usuario">Responsable del movimiento:</label>
+                <label class="col-md-3 fw-bold" for="usuario">Responsable del movimiento:</label>
                 <div class="col-md-6">
                     <select th:field="*{usuario}" class="form-control" id="usuario" required="required" readonly>
                         <option th:value=*{usuario.id} th:text=*{usuario.correo}></option>
@@ -85,7 +85,7 @@
 
         <div class="row">
             <div class="form-group col-md-12">
-                <label class="col-md-3" for="fecha">Fecha del movimiento:</label>
+                <label class="col-md-3 fw-bold" for="fecha">Fecha del movimiento:</label>
                 <div class="col-md-6">
                     <input type="date" th:field="*{fecha}" class="form-control" id="fecha" required="required" readonly></div>
             </div>
@@ -94,15 +94,15 @@
 
 
            <div class="row">
-            <div class="col-md-2">
-                <button class="btn btn-success">Actualizar Movimiento</button>
+            <div class="col-md-2 ">
+                <button class="btn btn-success fw-bold">Actualizar Movimiento</button>
             </div>
         </div>
 
     </form>
 
     <br>
-    <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
+    <a href="javascript: history.go(-1)" class="btn btn-info fw-bold" role="button">Atrás</a>
 
 </div>
 

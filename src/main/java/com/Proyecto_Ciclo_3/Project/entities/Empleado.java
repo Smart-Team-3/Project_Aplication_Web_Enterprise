@@ -27,7 +27,7 @@ public class Empleado {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="empresa_id")//enlaza
     private Empresa empresa;//llamo a Empresa debo asociar
-    @Column(name = "rol" , unique = true)
+    @Column(name = "rol", unique = false)
     private String rol;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<MovimientoDinero> movements;
