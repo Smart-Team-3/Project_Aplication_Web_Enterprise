@@ -21,13 +21,13 @@
 </head>
 <body>
 
-<div class="container ">
-    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
-    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
+<div class="container fw-bold ">
+    <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p>
+    <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
 
     <h1 class="display-5 fw-bold"> Lista de movimientos</h1>
 
-    <br><table class="table table-bordered">
+    <br><table class="table table-bordered fw-bold">
     <tr>
         <th class="fw-bold">ID</th>
         <th class="fw-bold">Concepto</th>
@@ -64,17 +64,17 @@
 </table>
 
       <nav aria-label="Ejemplo navegacion">
-        <ul class="pagination mt-4">
-            <li th:class="${paginaActual==estado.index} ? 'active' : '' " th:each="pagina, estado: ${paginas}" class="page-item">
-                <a th:href="@{/viewmovement/(pagina=${estado.index})}" class="page-link" th:text="${estado.index}+1"></a>
+        <ul class="pagination mt-4 fw-bold">
+            <li th:class="${paginaActual==estado.index} ? 'active' : '' fw-bold " th:each="pagina, estado: ${paginas}" class="page-item">
+                <a th:href="@{/viewmovement/(pagina=${estado.index})}" class="page-link fw-bold" th:text="${estado.index}+1"></a>
             </li>
         </ul>
     </nav>
 
-     <div class="row">
+     <div class="row fw-bold">
         <div class="form-group col-md-12">
             <label class="col-md-3 fw-bold" for="sumaMontos">Total Movimientos:</label>
-            <div class="col-md-6">
+            <div class="col-md-6 fw-bold">
                 <p th:text="${#numbers.formatCurrency(sumaMontos)}" class="form-control fw-bold" id="sumaMontos"></p>
             </div>
         </div>

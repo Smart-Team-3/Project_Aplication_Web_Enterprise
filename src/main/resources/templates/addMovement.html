@@ -20,19 +20,19 @@
 <body>
 
 <div class="container">
-    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p><br>
-    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
+    <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p><br>
+    <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
 
-    <h1> Agregue aqui los datos del movimiento</h1>
+    <h1 class="display-5 fw-bold"> Agregue aqui los datos del movimiento</h1>
     <br>
 
     <form th:action="@{/savemovement}" th:object="${movement}" method="post">
 
-        <div class="row">
+        <div class="row fw-bold">
             <div class="form-group col-md-12">
-                <label class="col-md-3" for="concepto">Concepto del Movimiento:</label>
-                <div class="col-md-6">
-                    <select th:field="*{concepto}" class="form-control" id="concepto" required="required">
+                <label class="col-md-3 fw-bold" for="concepto">Concepto del Movimiento:</label>
+                <div class="col-md-6 fw-bold">
+                    <select th:field="*{concepto}" class="form-control fw-bold" id="concepto" required="required">
                         <option th:value=1>Materias Primas</option>
                         <option th:value=2>Aditivos</option>
                         <option th:value=3>Empaques</option>
@@ -52,20 +52,20 @@
         </div>
 
 
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-3" for="monto">Valor del movimiento:</label>
-                <div class="col-md-6">
-                    <input type="number" th:field="*{monto}" class="form-control" id="monto" required="required"></div>
+        <div class="row fw-bold">
+            <div class="form-group col-md-12 fw-bold">
+                <label class="col-md-3 fw-bold" for="monto">Valor del movimiento:</label>
+                <div class="col-md-6 fw-bold">
+                    <input type="number" th:field="*{monto}" class="form-control fw-bold" id="monto" required="required"></div>
             </div>
         </div>
 
 
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-3" for="usuario">Empleado responsable:</label>
-                <div class="col-md-6">
-                    <select th:field="*{usuario}" class="form-control" id="usuario" required="required" readonly>
+        <div class="row fw-bold">
+            <div class="form-group col-md-12 fw-bold">
+                <label class="col-md-3 fw-bold" for="usuario">Empleado responsable:</label>
+                <div class="col-md-6 fw-bold">
+                    <select th:field="*{usuario}" class="form-control fw-bold" id="usuario" required="required" readonly>
                         <option th:each = "user: ${userList}" th:value="${user.id}" th:text = "${user.nombre}"></option>
                     </select>
                 </div>
@@ -74,25 +74,25 @@
 
 
 
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-3" for="fecha">Fecha del movimiento:</label>
-                <div class="col-md-6">
-                    <input type="date" th:field="*{fecha}" class="form-control" id="fecha" required="required"></div>
+        <div class="row fw-bold">
+            <div class="form-group col-md-12 fw-bold">
+                <label class="col-md-3 fw-bold" for="fecha">Fecha del movimiento:</label>
+                <div class="col-md-6 fw-bold">
+                    <input type="date" th:field="*{fecha}" class="form-control fw-bold" id="fecha" required="required"></div>
             </div>
         </div>
 
 
-        <div class="row">
-            <div class="col-md-2">
-                <button class="btn btn-success">Registrar Movimiento</button>
+        <div class="row fw-bold">
+            <div class="col-md-2 fw-bold">
+                <button class="btn btn-success fw-bold">Registrar Movimiento</button>
             </div>
         </div>
 
     </form>
 
     <br>
-    <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
+    <a href="javascript: history.go(-1)" class="btn btn-info fw-bold" role="button">Atrás</a>
 
 </div>
 <script th:inline="javascript">

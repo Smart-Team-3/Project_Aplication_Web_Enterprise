@@ -25,7 +25,7 @@
 
   <form th:action="@{/saveuser}" th:object="${user}" method="post">
 
-    <div class="row">
+    <div class="row fw-bold">
       <div class="form-group col-md-12">
         <label class="col-md-3 fw-bold" for="nombre">Nombre del Empleado:</label>
         <div class="col-md-6">
@@ -34,30 +34,30 @@
     </div>
 
 
-    <div class="row">
-      <div class="form-group col-md-12">
+    <div class="row fw-bold">
+      <div class="form-group col-md-12 fw-bold">
         <label class="col-md-3 fw-bold" for="correo">Correo del empleado:</label>
         <div class="col-md-6">
           <input type="email" th:field="*{correo}" class="form-control" id="correo" required="required"></div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="form-group col-md-12">
+    <div class="row fw-bold">
+      <div class="form-group col-md-12 fw-bold">
         <label class="col-md-3 fw-bold" for="empresa">Empresa a la que pertence:</label>
         <div class="col-md-6">
-          <select th:field="*{empresa}" class="form-control" id="empresa" required="required">
+          <select th:field="*{empresa}" class="form-control fw-bold" id="empresa" required="required">
             <option th:each="empresa : ${enterpriseList}" th:text="${empresa.nombre}" th:value="${empresa.id}"></option>
           </select>
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="form-group col-md-12">
+    <div class="row fw-bold">
+      <div class="form-group col-md-12 fw-bold">
         <label class="col-md-3 fw-bold" for="rol">Rol del empleado:</label>
-        <div class="col-md-6">
-          <select th:field="*{rol}" class="form-control" id="rol" required="required">
+        <div class="col-md-6 fw-bold">
+          <select th:field="*{rol}" class="form-control fw-bold" id="rol" required="required">
             <option th:value=administrativo>administrativo</option>
             <option th:value=operativo>operativo</option>
           </select>
@@ -65,8 +65,8 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-2">
+    <div class="row fw-bold">
+      <div class="col-md-2 fw-bold">
         <button class="btn btn-success fw-bold ">Registrar empleado</button>
       </div>
     </div>

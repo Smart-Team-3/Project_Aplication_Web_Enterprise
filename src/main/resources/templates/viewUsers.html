@@ -22,18 +22,18 @@
 <body>
 
 <div class="container">
-  <h1> Lista de Empleados</h1>
+  <h1 class="display-5 fw-bold"> Lista de Empleados</h1>
 
-  <br><table class="table table-bordered">
+  <br><table class="table table-bordered fw-bold ">
   <tr>
-    <th>ID</th>
-    <th>Nombre</th>
-    <th>Correo</th>
-    <th>Empresa</th>
-    <th>Rol</th>
-    <th>Movimientos</th>
-    <th>Editar</th>
-    <th>Eliminar</th>
+    <th class="fw-bold">ID</th>
+    <th class="fw-bold">Nombre</th>
+    <th class="fw-bold">Correo</th>
+    <th class="fw-bold">Empresa</th>
+    <th class="fw-bold">Rol</th>
+    <th class="fw-bold">Movimientos</th>
+    <th class="fw-bold">Editar</th>
+    <th class="fw-bold">Eliminar</th>
   </tr>
 
   <tr th:each="user : ${userList}">
@@ -43,16 +43,16 @@
     <td th:text="${user.empresa.nombre}"></td>
     <td th:if="${user.rol=='administrativo'}">administrativo</td>
     <td th:if="${user.rol=='operativo'}">operativo</td>
-    <td><button type="button" class="btn btn-info"><a th:href="@{/users/{id}/movements(id=${user.id})}">Ver</a></button></td>
-    <td><button type="button" class="btn btn-warning"><a th:href="@{/edituser/{id}(id=${user.id})}">Editar</a></button></td>
-    <td><button type="button" class="btn btn-danger"><a th:href="@{/deleteuser/{id}(id=${user.id})}">Eliminar</a></button></td>
+    <td><button type="button" class="btn btn-info fw-bold"><a th:href="@{/users/{id}/movements(id=${user.id})}">Ver</a></button></td>
+    <td><button type="button" class="btn btn-warning fw-bold"><a th:href="@{/edituser/{id}(id=${user.id})}">Editar</a></button></td>
+    <td><button type="button" class="btn btn-danger fw-bold"><a th:href="@{/deleteuser/{id}(id=${user.id})}">Eliminar</a></button></td>
   </tr>
 </table>
 
-  <button type="button" class="btn btn-info"><a th:href="@{/adduser}">Agregar Nuevo Empleado</a></button>
+  <button type="button" class="btn btn-info fw-bold"><a th:href="@{/adduser}">Agregar Nuevo Empleado</a></button>
   <br><br>
 
-  <button type="button" class="btn btn-primary"><a th:href="@{/viewenterprises}">Ver lista de Empresas</a></button>
+  <button type="button" class="btn btn-primary fw-bold"><a th:href="@{/viewenterprises}">Ver lista de Empresas</a></button>
 </div>
 
 <script th:inline="javascript">
