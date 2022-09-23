@@ -9,12 +9,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class UsersService {
     @Autowired
     UsersRepository usersRepository;
+
+    public Empleado CreateUser(Empleado newUser){
+        return this.usersRepository.save(newUser);
+
+    }
+
+    public UsersService(UsersRepository usersRepository){
+        this.usersRepository = usersRepository;
+    }
 
     public List<Empleado> getAllUsers(){
         List<Empleado> usersList = new ArrayList<>();
