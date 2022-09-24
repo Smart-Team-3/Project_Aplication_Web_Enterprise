@@ -54,7 +54,7 @@
         <td th:if="${movement.concepto=='10'}">Proviciones Tributarias</td>
         <td th:if="${movement.concepto=='11'}">Transporte</td>
         <td th:if="${movement.concepto=='12'}">Seguridad Social</td>
-        <td class="text-right" th:text="${#numbers.formatCurrency(movement.monto)}"></td>
+        <td class="text-right fw-bold" th:text="${#numbers.formatCurrency(movement.monto)}"></td>
         <td th:text="${movement.usuario.nombre}"></td>
         <td th:text="${movement.usuario.empresa}"></td>
         <td th:text="${#dates.format(movement.fecha, 'dd/MM/yyyy')}"></td>
