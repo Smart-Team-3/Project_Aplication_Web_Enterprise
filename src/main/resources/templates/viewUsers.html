@@ -21,7 +21,9 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container fw-bold">
+  <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p>
+  <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
   <h1 class="display-5 fw-bold"> Lista de Empleados</h1>
 
   <br><table class="table table-bordered fw-bold ">

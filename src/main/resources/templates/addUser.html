@@ -19,13 +19,17 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container fw-bold">
+  <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p>
+  <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
   <h1 class="display-5 fw-bold">Crear Nuevo Usuario</h1>
   <br>
 
   <form th:action="@{/saveuser}" th:object="${user}" method="post">
 
     <div class="row fw-bold">
+      <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p>
+      <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
       <div class="form-group col-md-12">
         <label class="col-md-3 fw-bold" for="nombre">Nombre del Empleado:</label>
         <div class="col-md-6">

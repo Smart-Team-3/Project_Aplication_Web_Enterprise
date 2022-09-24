@@ -19,9 +19,9 @@
 </head>
 <body>
 
-<div class="container">
-    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
-    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
+<div class="container fw-bold">
+    <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p>
+    <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
 
     <h1 class="display-5 fw-bold"> Cambiar los datos del movimiento</h1>
     <br>
