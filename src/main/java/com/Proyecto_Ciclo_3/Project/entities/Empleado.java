@@ -20,8 +20,6 @@ public class Empleado {
     private String nombre;
     @Column(name = "correo" , unique = true)
     private String correo;
-    @Column(name = "auth0Id" , unique = true)
-    private String auth0Id;
 
     @ManyToOne()
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -37,15 +35,13 @@ public class Empleado {
     }
 
     //constructor sin id
-    public Empleado(String nombre, String correo, String rol, Empresa empresa,String foto,String auth0Id ) {
+    public Empleado(String nombre, String correo, String rol, Empresa empresa,String foto) {
         this.nombre = nombre;
         this.correo = correo;
         this.rol = rol;
         this.empresa = empresa;
         this.foto=foto;
-        this.auth0Id=auth0Id;
     }
-
     //get y set
     public Empresa getEmpresa(){
         return empresa;
@@ -118,11 +114,5 @@ public class Empleado {
         this.foto = foto;
     }
 
-    public String getAuth0Id() {
-        return auth0Id;
-    }
 
-    public void setAuth0Id(String auth0Id) {
-        this.auth0Id = auth0Id;
-    }
 }
