@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >>
 <head>
   <title>Lista de Empleados </title>
   <meta charset="utf-8">
@@ -11,22 +11,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <style>
     a{
-    color:black;
+    color:white;
     }
     a:hover {
-    color: black;
+    color: white;
     text-decoration:none;
     }
 </style>
 </head>
-<body>
+<body class="bg-dark text-white">
 
 <div class="container fw-bold">
   <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p>
   <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
   <h1 class="display-5 fw-bold"> Lista de Empleados</h1>
 
-  <br><table class="table table-bordered fw-bold ">
+  <br><table class="table table-bordered fw-bold text-white">
   <tr>
     <th class="fw-bold">ID</th>
     <th class="fw-bold">Nombre</th>
@@ -79,6 +79,7 @@
             "showMethod":"fadeIn",
             "hideMethod":"fadeOut",
         }
+
     }
 </script>
 </body>

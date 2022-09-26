@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>Lista de Empresas </title>
     <meta charset="utf-8">
@@ -11,52 +11,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <style>
     a{
-    color:black;
+    color:white;
     }
     a:hover {
-    color: black;
+    color: white;
     text-decoration:none;
     }
     </style>
 </head>
-<body>
+<body class="bg-dark text-white">
 
-    <div class="container fw-bold">
+    <div class="container fw-bold ">
         <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p>
-        <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
+        <button type="button" class="btn btn-danger fw-bold text-white" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
         <h1 class="display-5 fw-bold"> Lista de Empresas</h1>
 
-        <br><table class="table table-striped fw-bold">
+        <br><table class="table table-striped fw-bold bg-dark text-white">
             <tr>
-                <th class="fw-bold">ID</th>
-                <th class="fw-bold">Nombre</th>
-                <th class="fw-bold">Direccion</th>
-                <th class="fw-bold">Telefono</th>
-                <th class="fw-bold">NIT</th>
-                <th class="fw-bold">Empleados</th>
-                <th class="fw-bold">Movimientos</th>
-                <th class="fw-bold">Editar</th>
-                <th class="fw-bold">Eliminar</th>
+                <th class="fw-bold bg-dark text-white">ID</th>
+                <th class="fw-bold bg-dark text-white">Nombre</th>
+                <th class="fw-bold bg-dark text-white">Direccion</th>
+                <th class="fw-bold bg-dark text-white">Telefono</th>
+                <th class="fw-bold bg-dark text-white">NIT</th>
+                <th class="fw-bold bg-dark text-white">Empleados</th>
+                <th class="fw-bold bg-dark text-white">Movimientos</th>
+                <th class="fw-bold bg-dark text-white">Editar</th>
+                <th class="fw-bold bg-dark text-white">Eliminar</th>
 
             </tr>
 
-            <tr th:each="enterprise : ${enterpriseList}"> <!--el modelo guarda la lista de todas las empr-->
-                <td th:text="${enterprise.id}"></td>
-                <td th:text="${enterprise.nombre}"></td>
-                <td th:text="${enterprise.direccion}"></td>
-                <td th:text="${enterprise.telefono}"></td>
-                <td th:text="${enterprise.nit}"></td>
+            <tr th:each="enterprise : ${enterpriseList}" class="bg-dark text-white"> <!--el modelo guarda la lista de todas las empr-->
+                <td th:text="${enterprise.id}" class="bg-dark text-white"></td>
+                <td th:text="${enterprise.nombre}" class="bg-dark text-white"></td>
+                <td th:text="${enterprise.direccion}" class="bg-dark text-white"></td>
+                <td th:text="${enterprise.telefono}" class="bg-dark text-white"></td>
+                <td th:text="${enterprise.nit}" class="bg-dark text-white"></td>
 
-                <td><button type="button" class="btn btn-info fw-bold"><a th:href="@{/enterprise/{id}/users(id=${enterprise.id})}">Ver</a></button></td>
-                <td><button type="button" class="btn btn-primary fw-bold"><a th:href="@{/enterprise/{id}/movements(id=${enterprise.id})}">Ver</a></button></td>
-                <td><button type="button" class="btn btn-warning fw-bold"><a th:href="@{/editenterprise/{id}(id=${enterprise.id})}">Editar</a></button></td>
-                <td><button type="button" class="btn btn-danger fw-bold"><a th:href="@{/deleteenterprise/{id}(id=${enterprise.id})}">Eliminar</a></button></td>
+                <td><button type="button" class="btn btn-info fw-bold  text-white"><a th:href="@{/enterprise/{id}/users(id=${enterprise.id})}">Ver</a></button></td>
+                <td><button type="button" class="btn btn-primary fw-bold  text-white"><a th:href="@{/enterprise/{id}/movements(id=${enterprise.id})}">Ver</a></button></td>
+                <td><button type="button" class="btn btn-warning fw-bold  text-white"><a th:href="@{/editenterprise/{id}(id=${enterprise.id})}">Editar</a></button></td>
+                <td><button type="button" class="btn btn-danger fw-bold  text-white"><a th:href="@{/deleteenterprise/{id}(id=${enterprise.id})}">Eliminar</a></button></td>
             </tr>
         </table>
 
-            <button type="button" class="btn btn-info fw-bold"><a th:href="@{/addenterprise}">Agregar Nueva Empresa</a></button>
+            <button type="button" class="btn btn-info fw-bold text-white"><a th:href="@{/addenterprise}">Agregar Nueva Empresa</a></button>
             <br><br>
-            <button type="button" class="btn btn-primary fw-bold"><a th:href="@{/viewusers}">Ver Lista de Empleados</a></button>
+            <button type="button" class="btn btn-primary fw-bold text-white"><a th:href="@{/viewusers}">Ver Lista de Empleados</a></button>
     </div>
 
 

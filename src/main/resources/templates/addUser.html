@@ -9,19 +9,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
     a{
-    color:black;
+    color:white;
     }
     a:hover {
-    color: black;
+    color: white;
     text-decoration:none;
     }
 </style>
 </head>
-<body>
+<body class="bg-dark text-white">
 
-<div class="container fw-bold">
+<div class="container fw-bold bg-dark text-white">
   <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p>
-  <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
+  <button type="button" class="btn btn-danger fw-bold text-white" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
   <h1 class="display-5 fw-bold">Crear Nuevo Usuario</h1>
   <br>
 
@@ -31,7 +31,7 @@
       <div class="form-group col-md-12">
         <label class="col-md-3 fw-bold" for="nombre">Nombre del Empleado:</label>
         <div class="col-md-6">
-          <input type="text" th:field="*{nombre}" class="form-control" id="nombre" required="required"></div>
+          <input type="text" th:field="*{nombre}" class="form-control bg-dark text-white" id="nombre" required="required"></div>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
       <div class="form-group col-md-12 fw-bold">
         <label class="col-md-3 fw-bold" for="correo">Correo del empleado:</label>
         <div class="col-md-6">
-          <input type="email" th:field="*{correo}" class="form-control" id="correo" required="required"></div>
+          <input type="email" th:field="*{correo}" class="form-control bg-dark text-white" id="correo" required="required"></div>
       </div>
     </div>
 
@@ -48,7 +48,7 @@
       <div class="form-group col-md-12 fw-bold">
         <label class="col-md-3 fw-bold" for="empresa">Empresa a la que pertence:</label>
         <div class="col-md-6">
-          <select th:field="*{empresa}" class="form-control fw-bold" id="empresa" required="required">
+          <select th:field="*{empresa}" class="form-control fw-bold bg-dark text-white" id="empresa" required="required">
             <option th:each="empresa : ${enterpriseList}" th:text="${empresa.nombre}" th:value="${empresa.id}"></option>
           </select>
         </div>
@@ -59,7 +59,7 @@
       <div class="form-group col-md-12 fw-bold">
         <label class="col-md-3 fw-bold" for="rol">Rol del empleado:</label>
         <div class="col-md-6 fw-bold">
-          <select th:field="*{rol}" class="form-control fw-bold" id="rol" required="required">
+          <select th:field="*{rol}" class="form-control fw-bold bg-dark text-white" id="rol" required="required">
             <option th:value=administrativo>administrativo</option>
             <option th:value=operativo>operativo</option>
           </select>
@@ -69,14 +69,14 @@
 
     <div class="row fw-bold">
       <div class="col-md-2 fw-bold">
-        <button class="btn btn-success fw-bold ">Registrar empleado</button>
+        <button class="btn btn-success fw-bold text-white ">Registrar empleado</button>
       </div>
     </div>
 
   </form>
 
   <br>
-  <a href="javascript: history.go(-1)" class="btn btn-info fw-bold" role="button">Atrás</a>
+  <a href="javascript: history.go(-1)" class="btn btn-info fw-bold text-white" role="button">Atrás</a>
 
 </div>
 </body>

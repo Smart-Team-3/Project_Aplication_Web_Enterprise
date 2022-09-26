@@ -9,19 +9,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
     a{
-    color:black;
+    color:white;
     }
     a:hover {
-    color: black;
+    color: white;
     text-decoration:none;
     }
 </style>
 </head>
-<body>
+<body class="bg-dark text-white">
 
-<div class="container fw-bold">
+<div class="container fw-bold bg-dark text-white">
     <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p>
-    <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
+    <button type="button" class="btn btn-danger fw-bold text-white" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
 
     <h1 class="display-5 fw-bold"> Cambiar los datos del movimiento</h1>
     <br>
@@ -33,7 +33,7 @@
             <div class="form-group col-md-12 fw-bold">
                 <label class="col-md-3 fw-bold" for="id">ID del movimiento:</label>
                 <div class="col-md-6 fw-bold">
-                    <input type="text" name="id" th:field="*{id}" class="form-control fw-bold" id="id" required="required" readonly></div>
+                    <input type="text" name="id" th:field="*{id}" class="form-control fw-bold bg-dark text-white" id="id" required="required" readonly></div>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
             <div class="form-group col-md-12 fw-bold">
                 <label class="col-md-3 fw-bold" for="concepto">Concepto del Movimiento:</label>
                 <div class="col-md-6 fw-bold">
-                    <select th:field="*{concepto}" class="form-control fw-bold" id="concepto" required="required">
+                    <select th:field="*{concepto}" class="form-control fw-bold bg-dark text-white" id="concepto" required="required">
                         <option th:value=1>Materias Primas</option>
                         <option th:value=2>Aditivos</option>
                         <option th:value=3>Empaques</option>
@@ -66,7 +66,7 @@
             <div class="form-group col-md-12 fw-bold">
                 <label class="col-md-3 fw-bold" for="monto">Valor del movimiento:</label>
                 <div class="col-md-6 fw-bold">
-                    <input type="number" th:field="*{monto}" class="form-control fw-bold" id="monto" required="required"></div>
+                    <input type="number" th:field="*{monto}" class="form-control fw-bold bg-dark text-white" id="monto" required="required"></div>
             </div>
         </div>
 
@@ -75,7 +75,7 @@
             <div class="form-group col-md-12 fw-bold">
                 <label class="col-md-3 fw-bold" for="usuario">Responsable del movimiento:</label>
                 <div class="col-md-6 fw-bold">
-                    <select th:field="*{usuario}" class="form-control fw-bold" id="usuario" required="required" readonly>
+                    <select th:field="*{usuario}" class="form-control fw-bold bg-dark text-white" id="usuario" required="required" readonly>
                         <option th:value=*{usuario.id} th:text=*{usuario.correo}></option>
                     </select>
                 </div>
@@ -87,7 +87,7 @@
             <div class="form-group col-md-12 fw-bold">
                 <label class="col-md-3 fw-bold" for="fecha">Fecha del movimiento:</label>
                 <div class="col-md-6 fw-bold">
-                    <input type="date" th:field="*{fecha}" class="form-control fw-bold" id="fecha" required="required" readonly></div>
+                    <input type="date" th:field="*{fecha}" class="form-control fw-bold bg-dark text-white" id="fecha" required="required" readonly></div>
             </div>
         </div>
 
@@ -95,14 +95,14 @@
 
            <div class="row fw-bold">
             <div class="col-md-2 fw-bold">
-                <button class="btn btn-success btn-sm fw-bold ">Actualizar Movimiento</button>
+                <button class="btn btn-success btn-sm fw-bold text-white">Actualizar Movimiento</button>
             </div>
         </div>
 
     </form>
 
     <br>
-    <a href="javascript: history.go(-1)" class="btn btn-info fw-bold" role="button">Atrás</a>
+    <a href="javascript: history.go(-1)" class="btn btn-info fw-bold text-white" role="button">Atrás</a>
 
 </div>
 

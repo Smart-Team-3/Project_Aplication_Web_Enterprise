@@ -17,11 +17,11 @@
     }
 </style>
 </head>
-<body>
+<body class="bg-dark text-white">
 
-  <div class="container fw-bold">
-    <p th:inline="text" class="text-right fw-bold">User: [[${#httpServletRequest.remoteUser}]]</p>
-    <button type="button" class="btn btn-danger fw-bold" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
+  <div class="container fw-bold bg-dark text-white">
+    <p th:inline="text" class="text-right fw-bold ">User: [[${#httpServletRequest.remoteUser}]]</p>
+    <button type="button" class="btn btn-danger fw-bold text-white" style="float:right"><a th:href="@{/logout}">Log Out</a></button>
     <h1 class="display-5 fw-bold"> Crear una Nueva Empresa</h1>
     <br>
 
@@ -32,7 +32,7 @@
         <div class="form-group col-md-12 fw-bold">
           <label class="col-md-3 fw-bold" for="nombre">Nombre de la Empresa:</label>
           <div class="col-md-6 fw-bold">
-            <input type="text" th:field="*{nombre}" class="form-control fw-bold" id="nombre" required="required">
+            <input type="text" th:field="*{nombre}" class="form-control fw-bold bg-dark text-white" id="nombre" required="required">
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
         <div class="form-group col-md-12 fw-bold">
           <label class="col-md-3 fw-bold" for="direccion">Direccion de la empresa:</label>
           <div class="col-md-6 fw-bold">
-            <input type="text" th:field="*{direccion}" class="form-control fw-bold" id="direccion" required="required"></div>
+            <input type="text" th:field="*{direccion}" class="form-control fw-bold bg-dark text-white" id="direccion" required="required"></div>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
         <div class="form-group col-md-12 fw-bold">
           <label class="col-md-3 fw-bold" for="telefono">Telefono de la empresa:</label>
           <div class="col-md-6 fw-bold">
-            <input type="text" th:field="*{telefono}" class="form-control fw-bold" id="telefono" required="required"></div>
+            <input type="text" th:field="*{telefono}" class="form-control fw-bold bg-dark text-white" id="telefono" required="required"></div>
         </div>
       </div>
 
@@ -59,7 +59,7 @@
         <div class="form-group col-md-12 fw-bold">
           <label class="col-md-3 fw-bold" for="NIT">NIT de la empresa:</label>
           <div class="col-md-6 fw-bold">
-            <input type="text" th:field="*{nit}" class="form-control fw-bold" id="NIT" required="required"></div>
+            <input type="text" th:field="*{nit}" class="form-control fw-bold bg-dark text-white" id="NIT" required="required"></div>
         </div>
       </div>
 
@@ -67,7 +67,7 @@
 
       <div class="row fw-bold">
         <div class="col-md-2 fw-bold">
-          <button class="btn btn-success fw-bold"> Crear Empresa  </button>
+          <button class="btn btn-success fw-bold text-white"> Crear Empresa  </button>
         </div>
       </div>
 
